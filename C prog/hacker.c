@@ -1,0 +1,13 @@
+float mealCost;
+    int tipPercent;
+    int taxPercent;
+    float tip;
+    float tax;
+    float totalCost;
+    scanf("%f",&mealCost);
+    scanf("%d",&tipPercent);
+    scanf("%d",&taxPercent);
+    tip=(mealCost*(tipPercent/100.0));
+    tax=(mealCost*(taxPercent/100.0));
+    totalCost=(mealCost+tip+tax);
+    printf("The total meal cost is %.0f dollars.",totalCost);
