@@ -1,0 +1,67 @@
+#include <cmath> 
+#include <iostream> 
+using namespace std; 
+#define ull unsigned long long int 
+int binaryToDecimal(int n) 
+{ 
+    int num = n; 
+    int dec_value = 0; 
+    int base = 1; 
+  
+    int temp = num; 
+    while (temp) { 
+        int last_digit = temp % 10; 
+        temp = temp / 10; 
+        dec_value += last_digit * base; 
+        base = base * 2; 
+    } 
+    return dec_value; 
+} 
+
+
+int decimalToBinary(int N) 
+{ 
+    ull B_Number = 0; 
+    int cnt = 0; 
+    while (N != 0) { 
+        int rem = N % 2; 
+        ull c = pow(10, cnt); 
+        B_Number += rem * c; 
+        N /= 2; 
+        cnt++; 
+    } 
+    return B_Number; 
+}  
+int main() 
+{ 
+	ull t;
+  	cin>>t;
+  	for(ull u=0;u<t;u++)
+  	{
+  		ull m=-1,i,j,n=0,temp;
+  		cin>>n;
+    	ull arr[n],ans[10000];
+    	for(i=0;i<n;i++)
+    	{
+    		cin>>arr[i];
+    		cout<<arr[i]<<"\n";
+		}
+    	for(i=0;i<n;i++)
+    	{
+	    	ans[i] = decimalToBinary(arr[i]);
+	    	cout<<ans[i]<<" ";
+		}
+		for(i=0;i<n;i++)
+		{
+			for(j=0;j<n;j++)
+			{
+				temp = binaryToDecimal(ans[i] + ans[j]) - binaryToDecimal(ans[j] + ans[i]);
+				if(temp > m)
+				{
+					m = temp;
+				}
+			}
+		cout<<m<<"\n";	}
+	  }
+    return 0; 
+}
